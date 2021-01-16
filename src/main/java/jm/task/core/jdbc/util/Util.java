@@ -35,7 +35,7 @@ public class Util {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/java_dmeo?useSSL=false");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/schema_name111?useSSL=false&serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "12345");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -52,28 +52,6 @@ public class Util {
         }
         return sessionFactory;
     }
-    @SuppressWarnings(value = "UnusedDeclaration")
-    private static Configuration getConfiguration() {
-        Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(User.class);
-        return configuration;
-    }
-    public static SessionFactory getSessionFactory22() {
-        if (sessionFactory == null) {
-            sessionFactory = createSessionFactory();
-        }
-        return sessionFactory;
-    }
-
-
-    private static SessionFactory createSessionFactory() {
-        Configuration configuration = getConfiguration();
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
-        builder.applySettings(configuration.getProperties());
-        ServiceRegistry serviceRegistry = builder.build();
-        return configuration.buildSessionFactory(serviceRegistry);
-    }
-
 }
 
 

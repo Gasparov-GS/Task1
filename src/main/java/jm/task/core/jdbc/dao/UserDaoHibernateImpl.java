@@ -43,13 +43,10 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void saveUser(String name, String lastName, byte age) {
         Transaction transaction = null;
+
         try (Session session = Util.getSessionFactory().openSession()) {
-
             transaction = session.beginTransaction();
-
-            session.save(new User());
-
-
+            session.save(new User(name, lastName, age));
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -57,7 +54,6 @@ public class UserDaoHibernateImpl implements UserDao {
             }
         }
     }
-
     @Override
     public void removeUserById(long id) {
 
