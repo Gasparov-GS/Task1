@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
     public UserServiceImpl() throws ClassNotFoundException {
-        userDao = new UserDaoHibernateImpl();
+        userDao = new UserDaoJDBCImpl();
     }
 
     public void createUsersTable()  {
